@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestLucene2", "TestLucene2\TestLucene2.csproj", "{6B53E2F4-973F-4609-9628-F789DC57EEE6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuceneHelp", "LuceneHelp\LuceneHelp.csproj", "{3B6125B2-C3C6-407A-B21F-C9A98CB0DEE6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6B53E2F4-973F-4609-9628-F789DC57EEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6B53E2F4-973F-4609-9628-F789DC57EEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6B53E2F4-973F-4609-9628-F789DC57EEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6B53E2F4-973F-4609-9628-F789DC57EEE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B6125B2-C3C6-407A-B21F-C9A98CB0DEE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B6125B2-C3C6-407A-B21F-C9A98CB0DEE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B6125B2-C3C6-407A-B21F-C9A98CB0DEE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B6125B2-C3C6-407A-B21F-C9A98CB0DEE6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
