@@ -1,0 +1,86 @@
+Lucene.Net.Contrib.Highlighter.dll
+Lucene.Net.Contrib.Memory.dll
+===============================================================================
+public string GethighLightString(Query q, string text, Analyzer analyzer)
+{
+	QueryScorer scorer = new QueryScorer(q);
+	IFormatter formatter = new SimpleHTMLFormatter("<font color='red'>", "</font>");
+	Highlighter highlighter = new Highlighter(formatter, scorer);
+	highlighter.TextFragmenter = new SimpleFragmenter(6); //返回多少个字符
+	//TokenStream stream = analyzer.TokenStream("name", new StringReader(text));
+	return highlighter.GetBestFragment(analyzer, null, text);
+}
+
+===============================================================================
+public string GethighLightString(Query q, string text)
+{
+	QueryScorer scorer = new QueryScorer(q);
+	IFormatter formatter = new SimpleHTMLFormatter("<font color='red'>", "</font>");
+	Highlighter highlighter = new Highlighter(formatter, scorer);
+	//highlighter.SetTextFragmenter(new SimpleFragmenter(fragmentLength));
+	highlighter.TextFragmenter = new SimpleFragmenter(200);
+	TokenStream stream = new JiebaAnalyzer().TokenStream(null, new StringReader(text));
+	return highlighter.GetBestFragments(stream, text, 1000, "");
+}
+
+============================使用方法======================================
+Query query = null;
+BooleanQuery qb = new BooleanQuery();
+Query q = new TermQuery(new Term("name", "打工"));
+Query q2 = new PrefixQuery(new Term("name", "广"));
+Query q3 = new TermQuery(new Term("name", "浙江"));
+qb.Add(q, Occur.SHOULD);
+qb.Add(q2, Occur.SHOULD);
+qb.Add(q3, Occur.SHOULD);
+
+//QueryParser parse = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, "name", new StandardAnalyzer(Lucene.Net.Util.Version.LUCENE_30));
+QueryParser parse = new QueryParser(Lucene.Net.Util.Version.LUCENE_30, "name", new JiebaAnalyzer());
+
+query = qb;
+
+//query = parse.Parse("打工xx广东阿萨德就卡死的开奖号深圳");
+
+IndexSearcher searcher = LuceneTools.GetIndexSearcher(indexName);
+
+ScoreDoc[] scores = searcher.Search(query, 100).ScoreDocs;
+
+foreach (var score in scores)
+{
+	Document doc = searcher.Doc(score.Doc);
+
+	string name = doc.Get("name");
+	Response.Write(name);
+
+	string result = GethighLightString(query, name);
+	Response.Write(result);
+}
+
+--------------------方式二-------------------------
+public string SearchY(string htmlContent, string searchText)
+{
+	   ISet<String> stopWords = getUpdatedStandardAnalyserStopWords(System.Environment.CurrentDirectory + "\\stopwords.txt");
+	   try
+	   {
+		   using (StandardAnalyzer standardAnalyzer = new StandardAnalyzer(Version.LUCENE_30, stopWords))
+		   {
+			   QueryParser parser = new QueryParser(Version.LUCENE_30, "Content", standardAnalyzer);
+			   Query query = parser.Parse(searchText);
+			   QueryScorer scorer = new QueryScorer(query, "Content");
+			   SimpleHTMLFormatter htmlFormatter = new SimpleHTMLFormatter("<span style=\"font-weight:bold; background-color:yellow;\">", "</span>");
+			   Highlighter highlighter = new Highlighter(htmlFormatter, scorer);
+			   highlighter.TextFragmenter = new NullFragmenter();
+			   StandardTokenizer tonizer = new StandardTokenizer(Version.LUCENE_30, new IO.StringReader(searchText));
+			  string m2 = highlighter.GetBestFragments(tonizer, htmlContent, 1000, "...");                        
+			   return m2;
+
+
+
+		   }
+	   }
+	   catch (Exception ex)
+	   {
+		   string exMesg = ex.Message;
+		   return exMesg;
+	   }
+
+}

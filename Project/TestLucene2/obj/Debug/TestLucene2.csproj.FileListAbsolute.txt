@@ -1,0 +1,10 @@
+E:\项目\LuceneHelper\Project\TestLucene2\bin\TestLucene2.dll.config
+E:\项目\LuceneHelper\Project\TestLucene2\bin\TestLucene2.dll
+E:\项目\LuceneHelper\Project\TestLucene2\bin\TestLucene2.pdb
+E:\项目\LuceneHelper\Project\TestLucene2\bin\LuceneHelp.dll
+E:\项目\LuceneHelper\Project\TestLucene2\bin\Lucene.Net.dll
+E:\项目\LuceneHelper\Project\TestLucene2\bin\FastMember.dll
+E:\项目\LuceneHelper\Project\TestLucene2\bin\LuceneHelp.pdb
+E:\项目\LuceneHelper\Project\TestLucene2\obj\Debug\TestLucene2.csprojResolveAssemblyReference.cache
+E:\项目\LuceneHelper\Project\TestLucene2\obj\Debug\TestLucene2.dll
+E:\项目\LuceneHelper\Project\TestLucene2\obj\Debug\TestLucene2.pdb

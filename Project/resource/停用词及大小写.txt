@@ -1,0 +1,9 @@
+public override TokenStream TokenStream(string fieldName, TextReader reader)
+{
+    var seg = new JiebaSegmenter();
+    TokenStream result = new JiebaTokenizer(seg, reader);
+    // This filter is necessary, because the parser converts the queries to lower case.
+    result = new LowerCaseFilter(result);
+    result = new StopFilter(true, result, StopWords);
+    return result;
+}

@@ -1,0 +1,7 @@
+E:\项目\LuceneHelper\Project\LuceneHelp\bin\Debug\LuceneHelp.dll
+E:\项目\LuceneHelper\Project\LuceneHelp\bin\Debug\LuceneHelp.pdb
+E:\项目\LuceneHelper\Project\LuceneHelp\bin\Debug\FastMember.dll
+E:\项目\LuceneHelper\Project\LuceneHelp\bin\Debug\Lucene.Net.dll
+E:\项目\LuceneHelper\Project\LuceneHelp\obj\Debug\LuceneHelp.csprojResolveAssemblyReference.cache
+E:\项目\LuceneHelper\Project\LuceneHelp\obj\Debug\LuceneHelp.dll
+E:\项目\LuceneHelper\Project\LuceneHelp\obj\Debug\LuceneHelp.pdb
