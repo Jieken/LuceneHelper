@@ -904,12 +904,41 @@ public class LuceneConnection : IDisposable
 
     #endregion
 
-    //释放IndexSearcher
+    #region 释放资源
+
     public void Dispose()
     {
-        if (_indexSearcher != null)
-            _indexSearcher.Dispose();
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
+
+    private bool m_disposed;
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!m_disposed)
+        {
+            if (disposing)
+            {
+                // Release managed resources
+            }
+
+            // Release unmanaged resources
+
+            if (_indexSearcher != null)
+                _indexSearcher.Dispose();
+
+            m_disposed = true;
+        }
+    }
+
+    ~LuceneConnection()
+    {
+        Dispose(false);
+    }
+
+
+    #endregion
 }
 
 //用于多个索引的读
@@ -977,14 +1006,42 @@ public class LuceneMultiConnection : IDisposable
         return LuceneTool.GetByPage<T>(indexSearcher, pageIndex, pageSize, out total, returnFields, q, sort, filter, maxReturnNum);
     }
 
+    #region 释放资源
+
     public void Dispose()
     {
-        if (indexSearcher != null)
-            indexSearcher.Dispose();
-        if (multiReader != null)
-            multiReader.Dispose();
-        readers = null;
+        Dispose(true);
+        GC.SuppressFinalize(this);
     }
+
+    private bool m_disposed;
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (!m_disposed)
+        {
+            if (disposing)
+            {
+                // Release managed resources
+            }
+            // Release unmanaged resources
+
+            if (indexSearcher != null)
+                indexSearcher.Dispose();
+            if (multiReader != null)
+                multiReader.Dispose();
+            readers = null;
+
+            m_disposed = true;
+        }
+    }
+
+    ~LuceneMultiConnection()
+    {
+        Dispose(false);
+    }
+
+    #endregion
 }
 
 
